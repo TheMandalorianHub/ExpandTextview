@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             android:layout_width="match_parent"
+                                             android:background="#12000000"
+                                             android:layout_height="wrap_content">
+    <android.support.constraint.ConstraintLayout
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/shape_white_rect7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/tv_ori"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="原文："
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <View
+                android:id="@+id/line2"
+                app:layout_constraintTop_toBottomOf="@id/tv_ori"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:background="@color/colorAccent"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"/>
+        <com.test.expandtextview.ExpandTextView
+                android:id="@+id/tv_after"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:current_text="后来的值"
+                app:content_size="14sp"
+                app:content_bold="false"
+                app:content_color="#333333"
+                app:special_size="14sp"
+                app:special_bold="true"
+                app:special_color="#333333"
+                app:shrink_text="收起"
+                app:expand_text="展开"
+                app:max_line="2"
+                app:expand_prifix_text="...."
+                app:special_right_margin="80dp"
+                app:bottom_margin="15dp"
+                app:special_left_margin="10dp"
+                app:special_horizon_click_more="60dp"
+                app:special_vertical_click_more="20dp"
+                app:layout_constraintTop_toBottomOf="@id/line2"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+        <View
+                android:id="@+id/line3"
+                app:layout_constraintTop_toBottomOf="@id/tv_after"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:background="@color/colorAccent"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"/>
+        <ImageView
+                android:id="@+id/iv"
+                app:layout_constraintTop_toBottomOf="@id/line3"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:background="@mipmap/ic_launcher"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

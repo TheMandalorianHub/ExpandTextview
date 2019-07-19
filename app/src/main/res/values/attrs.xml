@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--自定义的展开收起textview扩展属性-->
+    <declare-styleable name="ExpandTextView">
+        <!--每行文本之间底部的间距-->
+        <attr name="bottom_margin" format="dimension" />
+        <!--主内容的文字大小-->
+        <attr name="content_size" format="dimension" />
+        <!--主内容的文本颜色-->
+        <attr name="content_color" format="color" />
+        <!--主内容是否是粗体-->
+        <attr name="content_bold" format="boolean" />
+        <!--收起状态下距离右边的距离,就是展开 按钮距离右边最少需要留多少空间-->
+        <attr name="special_right_margin" format="dimension" />
+        <!--特殊按钮的展示距离左边的距离，就是 展开按钮距离左边 最少需要留多少空间-->
+        <attr name="special_left_margin" format="dimension" />
+        <!--特殊内容的文字大小-->
+        <attr name="special_size" format="dimension" />
+        <!--特殊内容的文本颜色-->
+        <attr name="special_color" format="color" />
+        <!--特殊内容是否是粗体-->
+        <attr name="special_bold" format="boolean" />
+        <!--特殊内容横向热区扩大值-->
+        <attr name="special_horizon_click_more" format="dimension" />
+        <!--特殊内容纵向热区扩大值-->
+        <attr name="special_vertical_click_more" format="dimension" />
+        <!--当前的文本内容数据，会剔除一些特殊字符-->
+        <attr name="current_text" format="string" />
+        <!--最大行数-->
+        <attr name="max_line" format="integer" />
+        <!--收起  当前状态是展开状态下 特殊按钮的文本内容-->
+        <attr name="shrink_text" format="string" />
+        <!--展开  当前状态是收起装态下 特殊按钮的文本内容-->
+        <attr name="expand_text" format="string" />
+        <!--展开  当前状态是收起装态下 前缀内容，会算在主内容里，一般可以用... 省略号表示-->
+        <attr name="expand_prifix_text" format="string" />
+    </declare-styleable>
+</resources>
