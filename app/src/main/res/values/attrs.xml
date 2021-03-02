@@ -34,5 +34,14 @@
         <attr name="expand_text" format="string" />
         <!--展开  当前状态是收起装态下 前缀内容，会算在主内容里，一般可以用... 省略号表示-->
         <attr name="expand_prifix_text" format="string" />
+
+        <!--原先是必须绘制文本，下面的属性代表支持自定义特殊展示区域的大小，这样在那个位置可以放一些自己自定义的控件内容-->
+        <!--如果设置了的话就要全部进行设置，则会优先依据这个走-->
+        <!--        这个代表展开状态下，收起内容区域的宽高说明-->
+        <attr name="special_shrink_width" format="dimension" />
+        <attr name="special_shrink_height" format="dimension" />
+        <!--        这个代表收缩状态下，展开内容区域的宽高说明-->
+        <attr name="special_expand_width" format="dimension" />
+        <attr name="special_expand_height" format="dimension" />
     </declare-styleable>
 </resources>
