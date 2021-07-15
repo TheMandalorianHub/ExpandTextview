@@ -1,6 +1,5 @@
 package com.test.expandtextview
 
-
 import android.content.Context
 import android.graphics.*
 import android.text.Layout
@@ -462,7 +461,7 @@ class ExpandTextView : View {
                 var currentLineHeight = getStaticLayoutHeight(currentLineStaticLayout)
                 drawText(
                     canvas,
-                    currentLineStr,
+                    getTmpDealText(currentLineStr),
                     getStartPainIndex(),
                     height + getDrawTextY(contentPaint, currentLineHeight),
                     contentPaint,
@@ -486,7 +485,7 @@ class ExpandTextView : View {
                         staticLayout.getLineEnd(i)
                     )
                     var currentLineStaticLayout =
-                        getStaticLayout(currentLineStr, contentPaint, width)
+                        getSingleLineTextStaticLayout(currentLineStr, contentPaint, width)
                     if (i == lineCount - 1) {
                         //最后一行特殊处理
                         var currentLineWidth = currentLineStaticLayout.getLineWidth(0)
@@ -496,7 +495,7 @@ class ExpandTextView : View {
                             var currentHeight = getStaticLayoutHeight(currentLineStaticLayout)
 
                             drawText(
-                                canvas, currentLineStr,
+                                canvas, getTmpDealText(currentLineStr),
                                 getStartPainIndex(),
                                 height + getDrawTextY(contentPaint, currentHeight),
                                 contentPaint,
@@ -533,7 +532,7 @@ class ExpandTextView : View {
                             var currentWidth = getStartPainIndex()
                             var currentHeight = getStaticLayoutHeight(currentLineStaticLayout)
                             drawText(
-                                canvas, currentLineStr,
+                                canvas, getTmpDealText(currentLineStr),
                                 currentWidth,
                                 height + getDrawTextY(contentPaint, currentHeight),
                                 contentPaint,
@@ -580,7 +579,7 @@ class ExpandTextView : View {
                         var currentHeight = getStaticLayoutHeight(currentLineStaticLayout)
                         drawText(
                             canvas,
-                            currentLineStr,
+                            getTmpDealText(currentLineStr),
                             getStartPainIndex(),
                             height + getDrawTextY(contentPaint, currentHeight),
                             contentPaint,
@@ -604,7 +603,7 @@ class ExpandTextView : View {
                         staticLayout.getLineEnd(i)
                     )
                     var currentLineStaticLayout =
-                        getStaticLayout(currentLineStr, contentPaint, width)
+                        getSingleLineTextStaticLayout(currentLineStr, contentPaint, width)
                     if (i == maxLine - 1) {
                         //在最大一行特殊处理
                         //需要计算前缀的内容信息
@@ -631,15 +630,14 @@ class ExpandTextView : View {
                                 //对文字进行缩减操作,包头不包围，去除最后一个文字
                                 newContentStr = newContentStr.substring(0, newContentStr.length - 1)
                                 currentLineStaticLayout =
-                                    getStaticLayout(newContentStr, contentPaint, width)
+                                    getSingleLineTextStaticLayout(newContentStr, contentPaint, width)
                                 lastLineWidth = currentLineStaticLayout.getLineWidth(0)
                             }
-
 //                            log.d("缩减完毕:$lastLineWidth")
                             //缩减够了，只绘制缩减后的文字内容
                             drawText(
                                 canvas,
-                                newContentStr,
+                                getTmpDealText(newContentStr),
                                 currentStartIndex,
                                 height + getDrawTextY(contentPaint, currentHeight),
                                 contentPaint,
@@ -779,7 +777,7 @@ class ExpandTextView : View {
                         var currentHeight = getStaticLayoutHeight(currentLineStaticLayout)
                         drawText(
                             canvas,
-                            currentLineStr,
+                            getTmpDealText(currentLineStr),
                             getStartPainIndex(),
                             height + getDrawTextY(contentPaint, currentHeight),
                             contentPaint,
@@ -840,6 +838,30 @@ class ExpandTextView : View {
         dy = y / 2 + dy
 
         return dy
+    }
+
+    private fun getTmpDealText(text: String): String {
+        return text.trimEnd()
+//        return if (isRtl()){text.trimStart()}else{text.trimEnd()}
+    }
+    private fun getSingleLineTextStaticLayout(text: String, paint: TextPaint, width: Int): StaticLayout {
+//        val p = Pattern.compile("\r\n") //正则表达式
+//        val m: Matcher = p.matcher(text)
+//        var dealText = m.replaceAll("")
+        var dealText = getTmpDealText(text)
+        var staticLayout =
+            StaticLayout(
+                dealText,
+                0,
+                dealText.length,
+                paint,
+                width,
+                Layout.Alignment.ALIGN_NORMAL,
+                1f,
+                0f,
+                true
+            )
+        return staticLayout
     }
 
     private fun getStaticLayout(text: String, paint: TextPaint, width: Int): StaticLayout {
